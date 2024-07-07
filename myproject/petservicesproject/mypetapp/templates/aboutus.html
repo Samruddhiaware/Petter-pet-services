@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Us</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -104,52 +104,7 @@
     </div>
 
     <div class="container">
-        <h2 style="text-align:center">Our Values</h2>
-    <div class="row">
-        <div class="column">
-            <div class="card ">
-                <div class="container" style="text-align: center;">
-                    <img src="../../media/resp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
-                </div>
-                                
-                <div class="container" style="text-align: center;">
-                    <h2>RESPONSIBLE</h2>                   
-                    <p>We value your trust and stand ready to take full and absolute responsibility for our actions.</p>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="card">
-                <div class="container" style="text-align: center;">
-                    <img src="../../media/emp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
-                </div>
-                        
-                
-                <div class="container" style="text-align: center;">
-                    <h2>EMPATHETIC</h2>                    
-                    <p> Understanding the bond between pets and their people, we create solutions that enrich and fulfill their lives.</p>
-                                  
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="card">
-                <div class="container" style="text-align: center;">
-                    <img src="../../media/insc.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
-                </div>
-                        
-                
-                <div class="container" style="text-align: center;">
-                    <h2>INCLUSIVE</h2>                    
-                    <p>We welcome all passionate people to become our Partner In Pethood to create a better world for pet's and community animals.</p>
-                   
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Services -->
     <h2 style="text-align:center">Our Services</h2>
     <div class="row">
@@ -197,6 +152,53 @@
             </div>
         </div>
     </div>
+
+    <h2 style="text-align:center">Our Values</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card ">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/resp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                                
+                <div class="container" style="text-align: center;">
+                    <h2>RESPONSIBLE</h2>                   
+                    <p>We value your trust and stand ready to take full and absolute responsibility for our actions.</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/emp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>EMPATHETIC</h2>                    
+                    <p> Understanding the bond between pets and their people, we create solutions that enrich and fulfill their lives.</p>
+                                  
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/insc.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>INCLUSIVE</h2>                    
+                    <p>We welcome all passionate people to become our Partner In Pethood to create a better world for pet's and community animals.</p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
     {% if sessionvalue %}
     <div class="container" style="text-align: center">
         <button class="btn btn-lg" style="background-color: lightpink; border-radius: 10px;">
@@ -212,7 +214,7 @@
         <button class="btn btn-lg" style="background-color: lightpink; border-radius: 10px;">
             <p class="lead">
                 <h4>
-                    <a href="{% url 'login' %}" class="btn btn-lg btn-warning">Login here to know more</a>
+                    <a href="{% url 'login' %}" class="btn btn-lg btn-warning">Login/register to know more</a>
                 </h4>
             </p>      
         </button>        

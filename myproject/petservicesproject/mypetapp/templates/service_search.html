@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Services</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Search Services</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    <script type="text/javascript">
+        $("#id_state").change(function () {
+            var url = "{% url 'load_cities' %}";
+            var stateId = $(this).val();
+            $.ajax({
+                url: url,
+                data: {
+                    'state': stateId
+                },
+                success: function (data) {
+                    $("#id_city").html('<option value="">Select City</option>');
+                    $.each(data, function (key, value) {
+                        $("#id_city").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+
+        $("#id_city").change(function () {
+            var url = "{% url 'load_areas' %}";
+            var cityId = $(this).val();
+            $.ajax({
+                url: url,
+                data: {
+                    'city': cityId
+                },
+                success: function (data) {
+                    $("#id_area").html('<option value="">Select Area</option>');
+                    $.each(data, function (key, value) {
+                        $("#id_area").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

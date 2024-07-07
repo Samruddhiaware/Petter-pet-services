@@ -1,0 +1,46 @@
+{% extends 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block myblock %}
+
+    <form action="" id="form">
+        <label for="pincode">pincode</label>
+        <input type="number" name="pin" id="pincode" placeholder="enter pincode">
+        <button type="submit">submit</button>
+    </form>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="Name">Nearby Locality</label>
+        <select name="locality" id="Name">
+            <option value="">select Nearby Locality</option>
+        </select>
+        <label for="Circle">State</label>
+        <select name="state" id="Circle">
+            <option value="">select State</option>
+        </select>
+        <label for="District">District</label>
+        <select name="district" id="District">
+            <option value="">select District</option>
+        </select>
+        <label for="Division">Division</label>
+        <select name="city" id="Division">
+            <option value="">Select City</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="../static/location.js"></script>
+
+
+
+    {% endblock %}    
+</body>
+</html>

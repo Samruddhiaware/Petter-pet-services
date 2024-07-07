@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="{% url 'viewcart' %}" method="POST">
+            {% csrf_token %}
+            <ul>
+                <label for="servicedate">Select date:</label>
+                <input type="date" id="servicedate" name="servicedate">
+                <label for="servicetime">Select time:</label>
+                <input type="time" id="servicetime" name="servicetime">     
+                <input type="submit" value="Submit">           
+            </ul>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

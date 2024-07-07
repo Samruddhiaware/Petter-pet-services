@@ -1,0 +1,386 @@
+<!-- 
+ for giving rating refer this bs template
+ https://bbbootstrap.com/snippets/bootstrap-rate-your-experience-template-star-ratings-30972576
+  -->
+
+  <!DOCTYPE html>
+<html>
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body>
+
+<h2>Star Rating</h2>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+
+<div>
+  <div>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="text-align: center;">
+          Search by Location
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+          style="text-align: center; align-items: center;">
+          <a class="dropdown-item" style="text-align: center; align-items: center;"
+              href="{% url 'filterbylocation' 'vashi' %}">Vashi</a>
+          <a class="dropdown-item" style="text-align: center; align-items: center;"
+              href="{% url 'filterbylocation' 'koperkhairne' %}">Koperkhairne</a>
+      </div>
+  </div>
+</div>
+
+<form class="mt-4" method="post" action="{% url 'payment' %}">
+  {% csrf_token %}
+  <div data-mdb-input-init class="form-outline form-white mb-4">
+      <input type="text" id="typeName"
+          class="form-control form-control-lg" siez="17"
+          placeholder="Your First Name" name="fn" />
+      <label class="form-label" for="typeName">First Name</label>
+  </div>
+  <div data-mdb-input-init class="form-outline form-white mb-4">
+      <input type="text" id="typeName"
+          class="form-control form-control-lg" siez="17"
+          placeholder="Your Last Name" name="ln"/>
+      <label class="form-label" for="typeName">Last Name</label>
+  </div>
+
+  <div data-mdb-input-init class="form-outline form-white mb-4">
+      <input type="text" id="typeText"
+          class="form-control form-control-lg" siez="17"
+          placeholder="Your Address" maxlength="50" name="address"/>
+      <label class="form-label" for="typeText">Address</label>
+  </div>
+
+  <div class="row mb-4">
+      <div class="col-md-6">
+          <div data-mdb-input-init class="form-outline form-white">
+              <input type="text" id="typeExp"
+                  class="form-control form-control-lg"
+                  placeholder="Your State" size="7" id="exp" 
+                  maxlength="15" name="state" />
+              <label class="form-label" for="typeExp">State</label>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div data-mdb-input-init class="form-outline form-white">
+              <input type="text" id="typeText"
+                  class="form-control form-control-lg"
+                  placeholder="Your City" size="1" minlength="3"
+                  maxlength="15" name="city" />
+              <label class="form-label" for="typeText">City</label>
+          </div>
+      </div>
+  </div>
+
+  <div class="row mb-4">
+      <div class="col-md-6">
+          <div data-mdb-input-init class="form-outline form-white">
+              <input type="number" id="typeExp"
+                  class="form-control form-control-lg"
+                  placeholder="Pincode" size="7" id="exp" minlength="7"
+                  maxlength="8" name="pin" />
+              <label class="form-label" for="typeExp">Pin</label>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div data-mdb-input-init class="form-outline form-white">
+              <input type="number" id="typeText"
+                  class="form-control form-control-lg"
+                  placeholder="Phone No." size="1" minlength="3"
+                  maxlength="10" name="phone" />
+              <label class="form-label" for="typeText">Phone
+                  Number</label>
+          </div>
+      </div>
+  </div>
+  <hr class="my-4">
+
+  <div class="d-flex justify-content-between">
+      <p class="mb-2">Total Bill</p>
+      <p class="mb-2">Rs. {{totalbill}}</p>
+  </div>
+
+  <button type="submit" data-mdb-button-init data-mdb-ripple-init
+      class="btn btn-info btn-block btn-lg">
+      <div class="d-flex justify-content-center">
+          <span>Place your order<i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+      </div>
+  </button>
+
+</form>
+
+<div class="card-body">
+    <h5 class="card-title">List of service bookings from customers </h5>
+    {% for i in cartobj %}
+
+    <div class="row p-2 bg-white border rounded" style="margin-bottom: 5px;">
+
+        <div class="col-md-3 mt-1">
+            <img class="img-fluid img-responsive rounded product-image" src="{{i.service_id.image.url}}">
+        </div>
+        
+        <div class="col-md-6 mt-1">
+            <h5>{{i.service_id.name}}</h5>
+            <div>
+                <span style="font-size: x-small;">by</span>
+                <span style="font-weight: bold;">{{i.service_id.provider}}</span>
+            </div>
+
+
+            <div class="mt-1 mb-1 spec-1">
+
+                <span>{{i.service_id.category}}</span>
+                <span class="dot">.</span>
+                <span>{{i.service_id.duration}}-min</span>
+                <span class="dot">.</span>
+
+            </div>
+            <p class="text-justify text-truncate para mb-0">{{i.service_id.description}}<br><br></p>
+
+        </div>
+
+        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+            <div class="d-flex flex-row align-items-center">
+                <h4 class="mr-1">Rs. {{i.service_id.price}}</h4>
+            </div>
+            <!-- <p>
+              <span>Rating: </span><span class="badge text-bg-info"
+                  style="background-color: yellowgreen">{{i.rating}}/5</span>
+          </p> -->
+            <div class="d-flex flex-column mt-4">
+                <div>
+                    <table>
+                        <tr>
+                            <td>S.No.</td>
+                            <td>Details</td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td>{{i.service_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td>{{i.service_time}}</td>
+                        </tr>
+                        <tr>
+                            <td>User</td>
+                            <td>{{i.user_id.name}}</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{i.id}}" name="cart_id">
+                    <td><button class="btn btn-primary" role="button" name="bookingdecision" value="accept" type="submit">Accept</button></td>
+                    <td><button class="btn btn-primary" role="button" name="bookingdecision" value="reject" type="submit">Reject</button></td>
+                </form>
+
+                
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<!--  summary.html -->
+{% extends 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets View</title>
+    <style>
+        @media (min-width: 1025px) {
+            .h-custom {
+                height: 100vh !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% block myblock %}
+    <section class="h-100 h-custom" style="background-color: #eee; ">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body p-4">
+
+                            <div class="row">
+
+                                <div class="col-lg-7">
+                                    <h5 class="mb-3"><i class="fas fa-long-arrow-alt-left me-2"></i>Cart Summary</a>
+                                    </h5>
+                                    <hr>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <p class="mb-1">Shopping cart : </p>
+                                            <p class="mb-0">You have {{count}} items in your cart</p>
+                                        </div>
+                                        <!-- <div>
+                                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
+                                                    class="text-body">price <i class="fas fa-angle-down mt-1"></i></a>
+                                            </p>
+                                        </div> -->
+                                    </div>
+
+                                    {% for i in cartobj %}
+                                    <div class="card mb-3 mb-lg-0">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src="{{i.service_id.image.url}}"
+                                                            class="img-fluid rounded-3" alt="Shopping item"
+                                                            style="width: 105px; height: 75px; padding: auto; margin-right: 10px; border-radius: 5;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>{{i.service_id.name}}</h5>
+                                                        <p class="fw-normal mb-0">{{i.service_id.species}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">{{i.quantity}}</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <h5 class="mb-0">{{i.totalamount}}</h5>
+                                                    </div>
+                                                    <a href="#!" style="color: #cecece;"><i
+                                                            class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                                <div class="col-lg-5">
+
+                                    <div class="card bg-primary text-white rounded-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h5 class="mb-0">Your details</h5>
+                                            </div>
+                                            <form action="{% url 'booking' %}" method="post">
+                                                {% csrf_token %}                    
+                                                <div class="card text-center" style="background-color: #B0E0E6">                        
+                                                    <div class="card-body">                          
+                                                      <p class="card-text">Proceed to book<button class="btn btn-primary" type="submit" name="booking">Book Now</button></p>                          
+                                                    </div>                        
+                                                  </div>
+                                            </form>
+                            
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</body>
+
+</html>
+
+
+</body>
+</html>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Petter</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../serviceview/">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'requestview' %}">Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'viewcart' %}">Cart</a>
+          </li>          
+          
+          <li class="nav-item">
+            <form class="d-flex" role="search" method="post" action="{% url 'search' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                name="searchquery">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </li>
+          <li class="nav-item" style="padding-left: 25px;">
+            <h4>Welcome! <b style="color: brown;">{{session}}</b></h4>
+          </li>
+          <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+          <!-- <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li> -->
+        </ul>
+
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="margin-left: 5px;"><a href="{% url 'logout' %}">Logout</a></button>
+      
+
+
+
+      </div>
+    </div>
+  </nav>

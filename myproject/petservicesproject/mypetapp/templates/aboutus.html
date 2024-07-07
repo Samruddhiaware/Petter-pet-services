@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+           
+            /* background-color:#59D5E0 ; */
+            /* background-image: linear-gradient(to right, pink, powderblue); */
+            
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 10px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            /* background-color: #474e5d; */
+            color: black;
+            height: 100%;
+            background: url(../../media/backg3.jpg) no-repeat center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        div {
+            align-content: center;
+        }
+
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        /* .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        } */
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-section">
+        <h1>About Us</h1>
+        <br>
+        <p>At Petter, we're pet parents just like you, driven by a passion for innovation. We're dedicated to crafting
+            safe and effective solutions that cater to the evolving needs and concerns of pet parents across India. Our
+            goal is to curate a comprehensive range of products and services, striving to become your ultimate
+            destination for all your pet's needs</p>
+        <p>We want to be there for your pets as much as you do and offer services to help your furry companion lead an
+            amazing life</p>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align:center">Our Values</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card ">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/resp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                                
+                <div class="container" style="text-align: center;">
+                    <h2>RESPONSIBLE</h2>                   
+                    <p>We value your trust and stand ready to take full and absolute responsibility for our actions.</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/emp.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>EMPATHETIC</h2>                    
+                    <p> Understanding the bond between pets and their people, we create solutions that enrich and fulfill their lives.</p>
+                                  
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/insc.jpg" alt="empathy" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>INCLUSIVE</h2>                    
+                    <p>We welcome all passionate people to become our Partner In Pethood to create a better world for pet's and community animals.</p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services -->
+    <h2 style="text-align:center">Our Services</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card ">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/pet-grooming.jpg" alt="grooming" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                                
+                <div class="container" style="text-align: center;">
+                    <h2>Pet Grooming</h2>                   
+                    <p>We value your trust and stand ready to take full and absolute responsibility for our actions.</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/pet sitting.jpg" alt="sitting" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>Pet Sitting and Walking</h2>                    
+                    <p> Understanding the bond between pets and their people, we create solutions that enrich and fulfill their lives.</p>
+                                  
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" style="text-align: center;">
+                    <img src="../../media/vet.jpg" alt="vet" style="width: 300px; height:300px; border-radius: 3px; align-self: center;">                    
+                </div>
+                        
+                
+                <div class="container" style="text-align: center;">
+                    <h2>Vet and healthcare</h2>                    
+                    <p>We welcome all passionate people to become our Partner In Pethood to create a better world for pet's and community animals.</p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if sessionvalue %}
+    <div class="container" style="text-align: center">
+        <button class="btn btn-lg" style="background-color: lightpink; border-radius: 10px;">
+            <p class="lead">
+                <h4>
+                    <a href="../serviceview/" class="btn btn-lg btn-warning">Check out our offerings</a>
+                </h4>
+            </p>      
+        </button>        
+    </div>
+    {% else %}
+    <div class="container" style="text-align: center">
+        <button class="btn btn-lg" style="background-color: lightpink; border-radius: 10px;">
+            <p class="lead">
+                <h4>
+                    <a href="{% url 'login' %}" class="btn btn-lg btn-warning">Login here to know more</a>
+                </h4>
+            </p>      
+        </button>        
+    </div>
+
+    {% endif %}
+
+    </div>
+
+    
+</body>
+
+</html>

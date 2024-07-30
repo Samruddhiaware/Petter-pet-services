@@ -70,7 +70,7 @@ def register(request):
         city = request.POST.get('city')
         state = request.POST.get('state')
         pincode = request.POST.get('pincode')
-        contact = request.POST.get('contact')
+        contact = request.POST.get('contact')        
         userobject = User(name=name, email=email, password=epassword, usertype=usertype, address_line1=address_line1, address_line2=address_line2, city=city, state=state, pincode=pincode, contact=contact)
         print(userobject)
         userobject.save()
